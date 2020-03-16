@@ -7,8 +7,6 @@
 typedef struct class{
     char name[20];
     int jum;
-
-
 }s;
 
 void swap2(char *to, char *from)
@@ -17,9 +15,7 @@ void swap2(char *to, char *from)
     strcpy(tmp, to);
     strcpy(to, from);
     strcpy(from, tmp);
-
 }
-
 
 int main()
 {
@@ -29,8 +25,8 @@ int main()
     int num1, num2;
     freopen("input.txt","r",stdin);
     scanf("%d %d", &num1, &num2);
-    //num1 : µ¥ÀÌÅ¸ÀÇ °¹¼ö
-    // num2 : Ãâ·ÂÀÎ¿ø
+    //num1 : ÂµÂ¥Ã€ÃŒÃ…Â¸Ã€Ã‡ Â°Â¹Â¼Ã¶
+    // num2 : ÃƒÃ¢Â·Ã‚Ã€ÃŽÂ¿Ã¸
 
     for(int i=0; i<num1; i++)
     {
@@ -68,22 +64,14 @@ int main()
             }
         }
 
-*/
-
        }
 
     }
-
-
-
 
 
     for(int i=0; i<num2; i++)
     {
         printf("%s\n", s[i].name);
     }
-
-
-
 
 }
