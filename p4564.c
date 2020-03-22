@@ -4,15 +4,7 @@
     int d[1000];
     int num1;
     int arr[100];
-
-    #include <stdio.h>
-#include <stdlib.h>
-
-    int d[1000];
-    int num1;
-    int arr[1000];
-
-    int max(int a,int b)
+int max(int a,int b)
     {
        if(a>b)
        {
