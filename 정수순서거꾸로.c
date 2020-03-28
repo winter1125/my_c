@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-//정수의 크기를 꺼꾸로 하는 프로그램 스택사용
-    typedef struct{
+//정수의 크기를 꺼꾸로 하는 프로그램 (스택사용)
+ typedef struct{
     int data[100];
     int top;
     }Stacktype;
@@ -17,7 +17,7 @@
 
   int pop(Stacktype *s){
      return s->data[(s->top)--];
-      };
+    };
 
 int main()
 {
