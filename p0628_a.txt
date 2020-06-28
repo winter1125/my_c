@@ -1,0 +1,4 @@
+﻿1>------ 빌드 시작: 프로젝트: Project3, 구성: Debug Win32 ------
+1>소스.c
+1>Project3.vcxproj -> C:\Users\Administrator\source\repos\Project3\Debug\Project3.exe
+========== 빌드: 성공 1, 실패 0, 최신 0, 생략 0 ==========
