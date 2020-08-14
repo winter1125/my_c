@@ -1,33 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
-#define max 5
+//#define SWAP(x,y,t)((t)=(x),(x)=(y),(y)=(t))
+#define S1(a) a*a
+#define S2(a) ((a)*(a))
+#define MAX(a,b)(((a)>(b))?(a):(b))
 
-void  main(){
-   int suja[4];
-   int k=1000,y=0;
-   int dt,bm,x,s,m,p;
+main() {
+	int a1 = 3, a2 = 5;
+	int b, c, d;
+	b = S1(a1 + a2);
+	c = S2(a1 + a2);
+	d = MAX(a1, a2);
+	printf("S1=%d, S2=%d, MAX=%d\n", b, c, d);
 
-   bm=8;
-   dt=4567;
-
-   for(x=0; x<=3; x++){
-    s=dt/k;
-    suja[x]=s;
-    dt=dt%k;
-    k=k/10;
-   }
-
-   for(x=0; x<=2; x++)
-   {
-       m=1;
-       for(p=0;p<=2-x;p++)
-        m=m*bm;
-       y=y+suja[x]*m;
-       //printf(" y=y+suja[x]*m;=%d\n", y);
-   }
-   y=y+suja[3];
-   printf("%d",y);
-    }
-
-
+}
