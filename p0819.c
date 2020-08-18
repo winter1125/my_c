@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-#define max 5
+
 
 void  main(){
    int i=3,j=5;
