@@ -1,16 +1,30 @@
 #include<stdio.h>
-
-double power(int x, int y){
-return x << y;
-//	return x*y
-}
-
-main() {
-	int x = 2, y;
-	double d;
-
-	for (y = 2; y <= 6; y++)
+void main() {
+	int a, b, m = 7;
+	for (a = 1; a <= m; a++)
 	{
-		d = power(x, y);
-		printf("%5d ^ %2d=%5.0f\n", x, y, d);	}
+		if ((a % 2) == 0)
+		{
+			b = a * 3;
+			while (b >= a * 3 - 2) {
+				printf("%d ", b);
+				b--;
+			}
+			printf("\n");
+
+		}
+
+		else
+
+		{
+			b = a * 3 - 2;
+			while (b <= a * 3)
+			{
+				printf("%d", b);
+				b++;
+			}
+			printf("\n");
+
+		}
+	}
 }
