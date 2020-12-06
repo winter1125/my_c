@@ -1,40 +1,28 @@
 #include <stdio.h>
 
-#define MAX 100
+const int N = 100;
+int edg[N][N], cnt[N];
+
+void adg(int x, int y)
+{
+	edg[x][++cnt[x]] = y;
+	edg[y][++cnt[y]] = x;
+}
 
 int main() {
-	int numbers[MAX];
-	int n;
-	printf("총 데이터 수 : ");
-	scanf("%d", &n);
-	printf("오름차순 데이터 입력 : ");
-	for (int i = 0; i < n; i++) {
-		scanf("%d", &numbers[i]);
-	}
+	int i, sum = 0;
+	adg(1, 2);
+	adg(1, 3);
+	adg(2, 1);
+	adg(2, 4);
+	adg(3,1);
+	adg(4, 2);
 
-	int count = 0;
-	int key;
-	printf("찾고자 하는 값 : ");
-	scanf("%d", &key);
-
-	// 이진 탐색
-	int left = 0, right = n - 1;
-	int mid;
-	while (left <= right) {
-		mid = (left + right) / 2;
-		count++;
-		if (key == numbers[mid]) {
-			break;
-		}
-		else if (key > numbers[mid]) {
-			left = mid + 1;
-		}
-		else {
-			right = mid - 1;
-		}
-	}
-
-	printf("총 탐색횟수 : %d\n", count);
-
+	for (i = 1; i <= 4; i++)
+		sum += cnt[i];
+	printf("%d ,\n", sum);
 	return 0;
+
+
 }
+
