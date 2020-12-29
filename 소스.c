@@ -1,30 +1,22 @@
 #include<stdio.h>
+#include<stdlib.h>
+
+
 void main() {
-	int a, b, m = 7;
-	for (a = 1; a <= m; a++)
+	char data[10] = { 1,2,3,4,5,6,7,8,9,10};
+
+
+	int len;
+	len = sizeof(data);
+	printf("%d \n", len);
+	char* p = data;
+	int sum = 0;
+	
+	for (int i = 0; i < len; i++)
 	{
-		if ((a % 2) == 0)
-		{
-			b = a * 3;
-			while (b >= a * 3 - 2) {
-				printf("%d ", b);
-				b--;
-			}
-			printf("\n");
-
-		}
-
-		else
-
-		{
-			b = a * 3 - 2;
-			while (b <= a * 3)
-			{
-				printf("%d", b);
-				b++;
-			}
-			printf("\n");
-
-		}
+		sum = sum + *p;
+		p++;
 	}
+
+	printf("%d ", sum);
 }
