@@ -6,11 +6,11 @@ int n;
 scanf("%d", &n);
 int count=0;
 
-for(int i=1;i<9;i++)
+for(int i=1;i<n;i++)
 {
-    for(int j=i; j<9; j++)
+    for(int j=i; j<n; j++)
     {
-        for(int k=j; k<9;k++)
+        for(int k=j; k<n;k++)
         {
             if(i+j+k==n)
             {
