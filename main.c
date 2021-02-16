@@ -1,25 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define SWAP(a,b,t)((t)=(a),(a)=(b),(b)=(t))
 
-int main(){
-int n;
-scanf("%d", &n);
-int count=0;
 
-for(int i=1;i<9;i++)
+typedef struct student {
+char name[10];
+int kok;
+int eng;
+int mat
+} student;
+
+
+int main()
 {
-    for(int j=i; j<9; j++)
+int t;
+int num;
+int least;
+
+scanf("%d", &num);
+student s[num];
+
+for(int i=0; i<num;i++)
+{
+    scanf("%s %d %d %d\n", &s[i].name, &s[i].kok,&s[i].eng,&s[i].mat);
+}
+
+
+
+
+for(int i=0; i<num;i++)
+{
+    least=i;
+
+    for(int j=i+1; j>num;j++)
     {
-        for(int k=j; k<9;k++)
-        {
-            if(i+j+k==n)
-            {
-                if(i<=k && i+j >k && i+j+k==n  )
-               count++;// printf("%d+%d+%d=%d\n",i,j,k,n);
-            }
-        }
+        if(s[j].kok<s[least].kok)
+         least=j;
+    }
+
+    if(i!=least){
+
+        SWAP(s[i].kok,s[least].kok,temp);
     }
 }
 
-printf("%d", count);
+
+
+
+for(int i=0; i<num;i++)
+{
+    printf("%s %d %d %d\n", s[i].name, s[i].kok,s[i].eng,s[i].mat);
 }
+
+
+
+
+}
+
+
