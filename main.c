@@ -1,60 +1,35 @@
 #include <stdio.h>
-#include <stdlib.h>
-#define SWAP(a,b,t)((t)=(a),(a)=(b),(b)=(t))
 
 
-typedef struct student {
-char name[10];
-int kok;
-int eng;
-int mat
-} student;
 
+int min(int a, int b)
+{ return (a>b) ? a:b; }
+
+
+
+int min3(int a, int b, int c)
+{ return min(a,b) ? min(a,c) : min(b,c); }
+
+
+int gdc3(int a, int b, int c) {
+  int i, min = min3(a, b, c);
+
+
+  printf("min=%d", min);
+
+  for(i=min; i>1; i--)
+    if(a%i==0 && b%i==0 && c%i==0)
+      return i;
+
+  return 1;
+}
 
 int main()
+
 {
-int t;
-int num;
-int least;
+  int a = 200, b = 30, c = 50;
 
-scanf("%d", &num);
-student s[num];
+  printf("%d, %d, %d의 최대공약수: %d\n", a, b, c, gdc3(a, b, c));
 
-for(int i=0; i<num;i++)
-{
-    scanf("%s %d %d %d\n", &s[i].name, &s[i].kok,&s[i].eng,&s[i].mat);
+  return 0;
 }
-
-
-
-
-for(int i=0; i<num;i++)
-{
-    least=i;
-
-    for(int j=i+1; j>num;j++)
-    {
-        if(s[j].kok<s[least].kok)
-         least=j;
-    }
-
-    if(i!=least){
-
-        SWAP(s[i].kok,s[least].kok,temp);
-    }
-}
-
-
-
-
-for(int i=0; i<num;i++)
-{
-    printf("%s %d %d %d\n", s[i].name, s[i].kok,s[i].eng,s[i].mat);
-}
-
-
-
-
-}
-
-
