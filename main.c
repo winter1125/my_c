@@ -1,35 +1,23 @@
 #include <stdio.h>
-
-
-
-int min(int a, int b)
-{ return (a>b) ? a:b; }
-
-
-
-int min3(int a, int b, int c)
-{ return min(a,b) ? min(a,c) : min(b,c); }
-
-
-int gdc3(int a, int b, int c) {
-  int i, min = min3(a, b, c);
-
-
-  printf("min=%d", min);
-
-  for(i=min; i>1; i--)
-    if(a%i==0 && b%i==0 && c%i==0)
-      return i;
-
-  return 1;
-}
+#include <stdlib.h>
 
 int main()
-
 {
-  int a = 200, b = 30, c = 50;
+    char num1[1000];
+    int i,j,sum=0;
+    int temp;
+    scanf("%s", num1);
 
-  printf("%d, %d, %d의 최대공약수: %d\n", a, b, c, gdc3(a, b, c));
+    for(int i=0; i<strlen(num1)/2;i++)
+    {
+        temp=num1[i];
+        num1[i]=num1[strlen(num1)-i-1];
+        num1[strlen(num1)-i-1]=temp;
+    }
 
-  return 0;
+
+    for(int i=0; i<strlen(num1);i++)
+    {
+        printf("%c ", num1[i]);
+    }
 }
