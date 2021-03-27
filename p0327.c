@@ -1,64 +1,105 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-char arr[10001];
+typedef int element;
+typedef struct TreeNode{
+    element key;
+    struct TreeNode *left, *right;
+}TreeNode;
 
-
-int check(){
-int open1=0, open2=0;
-int close1=0, close2=0;
-
-for(int i=0;arr[i]!=NULL;i++)
+TreeNode* search(TreeNode * node, int key)
 {
-    if(arr[i]=='(')open1++;
-    if(arr[i]==')')close1++;
-    if(arr[i]==']')open2++;
-    if(arr[i]=='[')close2++;
+    if(node==NULL) return NULL;
+    if(key==node->key) return node;
+    else if(key < node->key)
+        return search(node->left, key);
+    else
+        return search(node->right, key);
 }
 
-if(open1 != close1 || open2 != close2) return 0;
-else return 1;
+TreeNode * new_node(int item)
+{
+    TreeNode * temp=(TreeNode *)malloc(sizeof(TreeNode));
+    temp->key=item;
+    temp->left=temp->right=NULL;
+    return temp;
 
 }
 
-int main(){
-    int count=1;
-    int sum=0;
-
-freopen("input.txt","r",stdin);
-fgets(arr,sizeof(arr), stdin);
-if(check()== 0){
-    printf("0");
-    return 0;
+TreeNode * insert_node(TreeNode * node, int key)
+{
+    if(node==NULL) return new_node(key);
+    if(key < node->key)
+        node->left=insert_node(node->left, key);
+    else if(key > node->key)
+        node->right=insert_node(node->right, key);
+    return node;
 }
 
-for(int i=0; arr[i]!= NULL;i++){
-    if(arr[i]== '('){
-        count*=2;
-       }
-       if(arr[i]=='[')
-       {
-           count*=3;
-       }
-       if(arr[i]== ')')
-       {
-           if(arr[i-1]=='('){
-            sum+=count;
-       }
+TreeNode* min_value_node(TreeNode *node)
+{
 
-       count/=2;
-
-       }
-
-       if(arr[i] == ']')
-       {
-           if(arr[i-1] =='['){
-            sum+=count;
-       }
-
-       count/=3;
-       }
+    TreeNode * current = node;
+    while(current->left != NULL)
+        current = current->left;
+    return current;
 }
 
-printf("%d", sum);
+TreeNode * delete_node(TreeNode* root, int key)
+{
+
+    if(root==NULL)return root;
+
+    if(key < root->key)
+        root->left = delete_node(root->left, key);
+    else if(key > root->key)
+        root->right = delete_node(root->right, key);
+    else{
+        if(root->left==NULL){
+            TreeNode * temp = root->right;
+            free(root);
+            return temp;
+            }
+
+        else if(root->right==NULL){
+            TreeNode * temp=root->left;
+            free(root);
+            return temp;
+        }
+
+        TreeNode * temp = min_value_node(root->right);
+        root->key=temp->key;
+        root->right=delete_node(root->right, temp->key);
+    }
+    return root;
+}
+void inorder(TreeNode * root){
+    if(root){
+        inorder(root->left);
+        printf("[%d] ", root->key);
+        inorder(root->right);
+    }
+}
+
+
+int main(void)
+{
+   TreeNode * root=NULL;
+   TreeNode * tmp=NULL;
+
+   root=insert_node(root, 30);
+   root=insert_node(root, 20);
+   root=insert_node(root, 10);
+   root=insert_node(root, 40);
+   root=insert_node(root, 50);
+   root-insert_node(root, 60);
+   printf("이진 탐색 트리 중의 순회 결과 \n");
+   inorder(root);
+   printf("\n\n");
+
+   if(search(root,30)!= NULL)
+    printf("이진 탐색 트리에서 30을 발견함 \n");
+   else
+    printf("이진 탐색 트리에서 30을 발견 못함\n");
+   return 0;
 }
