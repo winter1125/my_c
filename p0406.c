@@ -12,12 +12,17 @@ int heap_size;
 }HeapType;
 
 
-HeapType *creaye()
+HeapType *create()
 {
 
-    h->heap_size =0;
+    return (HeapType*)malloc(sizeof(HeapType));
 }
 
+void init(HeapType *h)
+{
+
+    h->heap_size=0;
+}
 
 void insert_max_heap(HeapType *h, element item)
 {
@@ -51,15 +56,15 @@ element delete_max_heap(HeapType *h)
         if((child< h->heap_size) && (h->heap[child].key < h->heap[child+1].key)
            child++;
            if(temp.key >= h->heap[child].key) break;
-            h->heap]parent]=h->heap[child];
+            h->heap[parent]=h->heap[child];
         parent=child;
         child*=2;
     }
 
 
-    h->heap[parent]=h->heap[child];
-    parent=child;
-    child*=2;
+    h->heap[parent]=item;
+    return item;
+
 
 }
 
@@ -77,12 +82,12 @@ int main()
     insert_max_heap(heap,e2);
     insert_max_heap(heap,e3);
 
-    e4=delete_max(heap,e1);
-    printf(">%d>", e4.key);
+    e4=delete_max_heap(heap,e1);
+    printf("<%d>", e4.key);
     d5=delete_max_heap(heap,e2);
-    printf(">%d>", e4.key);
+    printf("<%d>", e4.key);
     d6=delete_max_heap(heap, e3);
-    printf(">%d>", e4.key);
+    printf("<>%d>", e4.key);
 
     free(heap);
     return 0;
