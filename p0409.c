@@ -1,23 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define _CRT_SECURE_NO_WARNINGS  
 
-int odd(int num1, int num2){
-if(num2>=num1)
+
+
+
+#define TRUE 1
+
+int main(void)
 {
-    if(num1%2==1){
-        printf("%d ", num1);
+    int score = 0, m = 0, sum = 0;
+    while (TRUE)
+    {
+        printf("학생의 점수를 입력 하시오  ");
+        scanf("%d", &score);
+
+        if (score > 100)
+            break;
+        m = m + 1;
+        sum = sum + score;
     }
-    num1++;
-    odd(num1, num2);
-}
 
-}
+    printf("\n 입력 학생수는 %d 입니다 \n", m);
+    printf("점수 합계는 %d 입니다 \n", sum);
+    printf("평균 점수는 %d 입니다 \n", sum / m);
+    return 0;
 
-int main()
-{
-    int num1,num2;
-    freopen("input.txt","r",stdin);
-    scanf("%d %d", &num1, &num2);
-
-    odd(num1, num2);
 }
