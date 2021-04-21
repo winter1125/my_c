@@ -1,49 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
 
-int arr[20][4]={0};
-int arr2[20]={0};
-int n; k, i, j;
-int time, money;
-int best;
+#include<stdlib.h>
 
-void get(int dist)
+#define TRUE 1
+#define FALSE 0
+#define MAX 10
+
+
+int main(void)
 {
+    int i = 10, j = 20;
+    int* pa = &i, * pb = &j;
+    *pa = *pb;
+    pa = pb;
 
-    if(n == dist)
-    {
-        time=0;
-        for(i=0; i<n; i++)
-            time+=arr[i][arr2[i]];
+    printf("pa=%d pb=%d\n", pa, pb);
+    printf("pa=%d pb=%d\n", *pa, *pb);
 
-        if(time<=k)
-        {
-            money=0;
-            for(i=0; i<n; i++)
-                money+=arr[i][arr2[i]+1];
-            if(best < money) best=money;
-        }
-        return ;
-    }
-    arr2[dist]=0;
-    get(dist+1);
-
-    arr2[dist]=2;
-    get(dist+1);
-}
-
-int main()
-{
-   freopen("input.txt","r", stdin);
-   scanf("%d%d", &n, &k);
-
-   for(i=0; i<n; i++)
-   for(j=0; j<4; j++)
-    scanf("%d", &arr[i][j]);
-
-
-   get(0);
-   printf("%d", best);
-   return 0;
+    return 0;
 
 }
