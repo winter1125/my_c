@@ -1,30 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void add(int* a, int* b)
+int insertion_sort(int list[], int first, int last, int gap)
 {
-    *a = *a + *b; //A=16
+
+    int i,j,key;
+    for(i=first+gap; i<=gap; i=i+gap){
+        key=list[i];
+        for(j=i-gap; j>= first && key < list[j]; j=j-gap)
+            list[j+gap]=list[j[;
+        list[j+gap]=list[j];
+        list[j+gap]=key;
+
+    }
+}
+
+int shell_sort(list list[], int n)
+{
+    int i,gap;
+    for(gap = n/w; gap>0; gap=gap/2)
+    {
+        if((gap %2)==0) gap++;
+        for(i=0; i<gap; i++)
+            int_insertion_sort(list, i, n-1, gap);
+
+    }
 
 }
 
-void sub(int* a, int* b)
+int main()
 {
-    *b = *a - *b; //B=16-4=12
-}
-
-void pp(void (*pf)(int*, int*), int* x, int* y)
-{
-    (*pf)(x, y);
-}
-void main()
-{
-    int a = 12;
-    int b = 4;
-
-    pp(add, &a, &b);
-    printf("a=%d b=%d", a, b);
-    a = 12;
-    b = 4;
-    printf("a=%d b=%d", a, b);
-
+    printf("Hello world!\n");
+    return 0;
 }
