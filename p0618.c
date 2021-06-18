@@ -1,28 +1,19 @@
-#include<stdio.h>
-#define SWAP(x,y,t)((t)=(x),(x)=(y),(y)=(t))
+#include <stdio.h>
+#include <stdlib.h>
 
-void perm(char list[], int k, int n){
-	int j, temp;
-	if (k == n) {
-		for (j = 0; j <= n; j++)
-			printf("%c", list[j]);
-		perm(list, k + 1, n);
-		printf("\n");
+void h_t(int n, char from, char temp, char to)
+{
 
-	}
-	else
-	{
-		for(j=k; j<=n; j++){
+    if(n==1) printf("원판 1을 %c에서 %c로 \n", from, to);
+    else
+    {
+        h_t(n-1, from, to, temp);
+        printf("원판 %d를 %c에서 %c로 옮긴다\n", n,from, to);
+        h_t(n-1, temp, from, to);
+    }
 
-		SWAP(list[k], list[j], temp);
-		perm(list, k + 1, n);
-		SWAP(list[k], list[j], temp);
-	}
 }
-}
-
-main() {
-	char s[] = { 'a','b','c' };
-	perm(s, 0, 2);
-	return 0;
+int main()
+{
+    h_t(4,'A','B','C');
 }
